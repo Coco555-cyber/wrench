@@ -44,6 +44,7 @@ func (l *Lexer) nextToken() token.Token {
 	case ';':
 	case ':':
 	case '.':
+	case '\n':
 	case '(':
 	case ')':
 	case '{':
@@ -60,7 +61,7 @@ func (l *Lexer) nextToken() token.Token {
 }
 
 func (l *Lexer) skipWhiteSpace() {
-	for l.ch == ' ' || l.ch == '\t' || l.ch == '\n' || l.ch == '\r' {
+	for l.ch == ' ' || l.ch == '\t' || l.ch == '\r' {
 		l.readChar()
 	}
 }

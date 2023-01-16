@@ -1,7 +1,7 @@
 package token
 
 // Declaring TokenType as a type of string
-type TokenType string
+type TokenType int
 
 type Token struct {
 	Type    TokenType
@@ -10,53 +10,54 @@ type Token struct {
 
 // Declaring TokenTypes
 const (
-	ILLEGAL = "ILLEGAL"
-	EOF     = "EOF"
+	ILLEGAL = iota
+	EOF
 
 	// Identifiers + Literals
-	IDENT  = "IDENT"
-	INT    = "INT"
-	STRING = "STRING"
-	FLOAT  = "FLOAT"
+	IDENT
+	INT
+	STRING
+	FLOAT
 
 	// Operators
-	ASSIGN   = "="
-	PLUS     = "+"
-	MINUS    = "-"
-	SLASH    = "/"
-	ASTERISK = "*"
-	EXCITE   = "!"
+	ASSIGN
+	PLUS
+	MINUS
+	SLASH
+	ASTERISK
+	EXCITE
 
-	LT     = "<"
-	GT     = ">"
-	EQUAL  = "=="
-	NEQUAL = "!="
+	LT
+	GT
+	EQUAL
+	NEQUAL
 
 	// Delimiters
-	COMMA     = ","
-	SEMICOLON = ";"
-	COLON     = ":"
-	PERIOD    = "."
+	COMMA
+	SEMICOLON
+	COLON
+	PERIOD
+	NEWLINE
 
-	LPAREN   = "("
-	RPAREN   = ")"
-	LBRACE   = "{"
-	RBRACE   = "}"
-	LBRACKET = "["
-	RBRACKET = "]"
+	LPAREN
+	RPAREN
+	LBRACE
+	RBRACE
+	LBRACKET
+	RBRACKET
 
 	// Keywords
-	FUNC   = "FUNC"
-	LET    = "LET"
-	TRUE   = "TRUE"
-	FALSE  = "FALSE"
-	IF     = "IF"
-	ELSE   = "ELSE"
-	RETURN = "RETURN"
+	FUNC
+	LET
+	TRUE
+	FALSE
+	IF
+	ELSE
+	RETURN
 )
 
 var keywords = map[string]TokenType{
-	"fn":     FUNC,
+	"func":   FUNC,
 	"let":    LET,
 	"true":   TRUE,
 	"false":  FALSE,
