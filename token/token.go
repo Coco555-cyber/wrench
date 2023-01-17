@@ -31,6 +31,10 @@ const (
 	GT
 	EQUAL
 	NEQUAL
+	PEQUAL
+	MEQUAL
+	TEQUAL
+	DEQUAL
 
 	// Delimiters
 	COMMA
@@ -66,7 +70,7 @@ var keywords = map[string]TokenType{
 	"return": RETURN,
 }
 
-func lookupIdent(ident string) TokenType {
+func LookupIdent(ident string) TokenType {
 	if tok, ok := keywords[ident]; ok {
 		return tok
 	}

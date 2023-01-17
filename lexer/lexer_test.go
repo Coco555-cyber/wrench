@@ -30,6 +30,11 @@ func TestNextToken(t *testing.T) {
 			return false
 		}
 
+		ten += 5
+		ten -= 5
+		ten *= 5
+		ten /= 5
+
 		10 == 10
 		10 != 9
 		"foobar"
@@ -139,6 +144,9 @@ func TestNextToken(t *testing.T) {
 		{token.NEWLINE, "\n"},
 		{token.RBRACE, "}"},
 		{token.NEWLINE, "\n"},
+		{token.IDENT, "ten"},
+		{token.PEQUAL, "+="},
+		{token.INT, "5"},
 		{token.INT, "10"},
 		{token.EQUAL, "=="},
 		{token.INT, "10"},
@@ -168,7 +176,7 @@ func TestNextToken(t *testing.T) {
 	l := New(input)
 
 	for i, tt := range tests {
-		tok := l.nextToken()
+		tok := l.NextToken()
 
 		if tok.Type != tt.expectedType {
 			t.Fatalf("tests[%d] - tokentype wrong. expected = %q, got = %q", i, tt.expectedType, tok.Type)
