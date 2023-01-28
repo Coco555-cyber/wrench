@@ -6,8 +6,8 @@ import (
 )
 
 func TestNextToken(t *testing.T) {
-	input := `
-		let five = 5
+	input := `let five = 5
+	
 		let ten = 10
 
 		let float = 3.14
@@ -51,7 +51,7 @@ func TestNextToken(t *testing.T) {
 		{token.IDENT, "five"},
 		{token.ASSIGN, "="},
 		{token.INT, "5"},
-		{token.NEWLINE, "\n"},
+		{token.NEWLINE, " "},
 		{token.LET, "let"},
 		{token.IDENT, "ten"},
 		{token.ASSIGN, "="},

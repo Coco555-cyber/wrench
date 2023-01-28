@@ -1,6 +1,6 @@
 package token
 
-// Declaring TokenType as a type of string
+// Declaring TokenType as a type of int
 type TokenType int
 
 type Token struct {
