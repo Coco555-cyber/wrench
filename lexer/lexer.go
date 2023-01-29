@@ -122,8 +122,9 @@ func (l *Lexer) NextToken() token.Token {
 		default:
 			tok = newToken(token.ILLEGAL, l.ch)
 		}
+		l.readChar()
 	}
-	l.readChar()
+
 	return tok
 }
 
@@ -210,35 +211,3 @@ func (l *Lexer) scanNumber() string {
 
 	return l.input[position:l.position]
 }
-
-// func isInteger(num string) bool {
-// 	dotCount := 0
-
-// 	for _, ch := range num {
-// 		if ch == '.' {
-// 			dotCount++
-// 		}
-// 	}
-
-// 	if dotCount == 0 {
-// 		return true
-// 	}
-
-// 	return false
-// }
-
-// func isFloat(num string) bool {
-// 	dotCount := 0
-
-// 	for _, ch := range num {
-// 		if ch == '.' {
-// 			dotCount++
-// 		}
-// 	}
-
-// 	if dotCount == 1 {
-// 		return true
-// 	}
-
-// 	return false
-// }
