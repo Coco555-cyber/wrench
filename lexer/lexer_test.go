@@ -38,8 +38,7 @@ func TestNextToken(t *testing.T) {
 		"foobar"
 		"foo bar"
 		[1, 2]
-		{"foo": "bar"}
-	`
+		{"foo": "bar"}`
 
 	tests := []struct {
 		expectedType    token.TokenType
@@ -77,7 +76,7 @@ func TestNextToken(t *testing.T) {
 		{token.PLUS, "+"},
 		{token.IDENT, "y"},
 		{token.NEWLINE, " "},
-		{token.LBRACE, "}"},
+		{token.RBRACE, "}"},
 		{token.NEWLINE, " "},
 		{token.NEWLINE, " "},
 		{token.LET, "let"},

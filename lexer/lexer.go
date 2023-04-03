@@ -51,7 +51,7 @@ func (l *Lexer) NextToken() token.Token {
 			if l.peekChar() == '=' {
 				ch := l.ch
 				l.readChar()
-				tok = token.Token{Type: token.PEQUAL, Literal: string(ch)}
+				tok = token.Token{Type: token.PEQUAL, Literal: string(ch) + string(l.ch)}
 			} else {
 				tok = newToken(token.PLUS, l.ch)
 			}
@@ -59,23 +59,23 @@ func (l *Lexer) NextToken() token.Token {
 			if l.peekChar() == '=' {
 				ch := l.ch
 				l.readChar()
-				tok = token.Token{Type: token.MEQUAL, Literal: string(ch)}
+				tok = token.Token{Type: token.MEQUAL, Literal: string(ch) + string(l.ch)}
 			} else {
 				tok = newToken(token.MINUS, l.ch)
-			}
-		case '/':
-			if l.peekChar() == '=' {
-				ch := l.ch
-				l.readChar()
-				tok = token.Token{Type: token.TEQUAL, Literal: string(ch)}
-			} else {
-				tok = newToken(token.ASTERISK, l.ch)
 			}
 		case '*':
 			if l.peekChar() == '=' {
 				ch := l.ch
 				l.readChar()
-				tok = token.Token{Type: token.DEQUAL, Literal: string(ch)}
+				tok = token.Token{Type: token.TEQUAL, Literal: string(ch) + string(l.ch)}
+			} else {
+				tok = newToken(token.ASTERISK, l.ch)
+			}
+		case '/':
+			if l.peekChar() == '=' {
+				ch := l.ch
+				l.readChar()
+				tok = token.Token{Type: token.DEQUAL, Literal: string(ch) + string(l.ch)}
 			} else {
 				tok = newToken(token.SLASH, l.ch)
 			}
@@ -83,7 +83,7 @@ func (l *Lexer) NextToken() token.Token {
 			if l.peekChar() == '=' {
 				ch := l.ch
 				l.readChar()
-				tok = token.Token{Type: token.NEQUAL, Literal: string(ch)}
+				tok = token.Token{Type: token.NEQUAL, Literal: string(ch) + string(l.ch)}
 			} else {
 				tok = newToken(token.EXCITE, l.ch)
 			}
@@ -176,19 +176,9 @@ func (l *Lexer) readNumber() (token.TokenType, string) {
 	return token.TokenType(tok), l.input[position:l.position]
 }
 
-// func (l *Lexer) readFloat() string {
-// 	position := l.position
-
-// 	for isDigit(l.ch) || l.ch == '.' {
-// 		l.readChar()
-// 	}
-
-// 	return l.input[position:l.position]
-// }
-
 func (l *Lexer) readIdentifier() string {
 	position := l.position
-	for isLetter(l.ch) {
+	for isLetter(l.ch) || isDigit(l.ch) {
 		l.readChar()
 	}
 
